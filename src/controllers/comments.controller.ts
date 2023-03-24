@@ -5,11 +5,11 @@ const setNewComment = async (req: Request, res: Response) => {
     try {
         const id = Date.now().toString();
         const { date } = req.params;
-        const { comment, name } = req.body;
+        const { comment, name, actualDate } = req.body;
         const newComment = {
             comment,
             name,
-            date
+            actualDate
         }
         await db().collection(date).doc(id).set(newComment);
         return res.status(200).json(newComment);
