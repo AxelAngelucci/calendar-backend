@@ -2,11 +2,13 @@ import express from 'express';
 import commentsRouter from './routes/comments.routes';
 import "dotenv/config.js";
 import db from './config/db';
+import cors from 'cors'
 
 const app = express();
+
 const port = process.env.PORT || 8080;
 db();
-
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 

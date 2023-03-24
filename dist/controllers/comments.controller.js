@@ -25,10 +25,10 @@ const setNewComment = (req, res) => __awaiter(void 0, void 0, void 0, function* 
             date
         };
         yield (0, db_1.default)().collection(date).doc(id).set(newComment);
-        res.status(200).json(newComment);
+        return res.status(200).json(newComment);
     }
     catch (error) {
-        res.status(500).json({ message: 'Internal Server Error' });
+        return res.status(500).json({ message: 'Internal Server Error' });
     }
 });
 exports.setNewComment = setNewComment;
