@@ -18,11 +18,11 @@ const setNewComment = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     try {
         const id = Date.now().toString();
         const { date } = req.params;
-        const { comment, name } = req.body;
+        const { comment, name, actualDate } = req.body;
         const newComment = {
             comment,
             name,
-            date
+            actualDate
         };
         yield (0, db_1.default)().collection(date).doc(id).set(newComment);
         return res.status(200).json(newComment);
