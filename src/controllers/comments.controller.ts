@@ -1,8 +1,10 @@
 import { Request, Response } from "express";
 import db from "../config/db";
 
-const setNewComment = async (req: Request, res: Response) => {
+const setNewComment = async (req, res) => {
+    console.log(req)
     try {
+        console.log(req)
         const id = Date.now().toString();
         const { date } = req.params;
         const { comment, name, actualDate } = req.body;
@@ -18,7 +20,7 @@ const setNewComment = async (req: Request, res: Response) => {
     }
 }
 
-const getAllCommentsInCollection = async (req: Request, res: Response) => {
+const getAllCommentsInCollection = async (req, res) => {
     try {
         const { date } = req.params;
         const comments = db().collection(date);
