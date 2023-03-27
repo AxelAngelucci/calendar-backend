@@ -15,9 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getAllCommentsInCollection = exports.setNewComment = void 0;
 const db_1 = __importDefault(require("../config/db"));
 const setNewComment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(req);
     try {
-        console.log(req);
         const id = Date.now().toString();
         const { date } = req.params;
         const { comment, name, actualDate } = req.body;
@@ -26,7 +24,7 @@ const setNewComment = (req, res) => __awaiter(void 0, void 0, void 0, function* 
             name,
             actualDate
         };
-        yield (0, db_1.default)().collection(date).doc(id).set(newComment);
+        const newCommentt = yield (0, db_1.default)().collection(date).doc(id).set(newComment);
         return res.status(200).json(newComment);
     }
     catch (error) {

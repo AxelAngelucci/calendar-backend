@@ -2,9 +2,7 @@ import { Request, Response } from "express";
 import db from "../config/db";
 
 const setNewComment = async (req, res) => {
-    console.log(req)
     try {
-        console.log(req)
         const id = Date.now().toString();
         const { date } = req.params;
         const { comment, name, actualDate } = req.body;
@@ -13,7 +11,7 @@ const setNewComment = async (req, res) => {
             name,
             actualDate
         }
-        await db().collection(date).doc(id).set(newComment);
+        const newCommentt = await db().collection(date).doc(id).set(newComment);
         return res.status(200).json(newComment);
     } catch (error) {
         return res.status(500).json({ message: 'Internal Server Error' });
